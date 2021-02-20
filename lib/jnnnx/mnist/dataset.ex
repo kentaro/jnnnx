@@ -1,14 +1,4 @@
-defmodule Jnnnx.Mnist.Dataset do
-  @doc """
-  Loads MNIST datasets.
-
-  ## Examples
-
-  ```
-  iex> [x_train, y_train, x_test, y_test] = Jnnnx.Mnist.Dataset.load_data()
-  ```
-
-  """
+defmodule Jnnnx.MNIST.Dataset do
   def load_data() do
     [x_train, x_test] =
       [
@@ -61,7 +51,7 @@ defmodule Jnnnx.Mnist.Dataset do
     <<_::32, n_images::32, n_rows::32, n_cols::32, images::binary>> = data
 
     Nx.from_binary(images, {:u, 8})
-    |> Nx.reshape({n_images, n_rows * n_cols})
+    |> Nx.reshape({n_images, n_rows * n_cols}, names: [:batch, :input])
   end
 
   defp load_labels(data) do
