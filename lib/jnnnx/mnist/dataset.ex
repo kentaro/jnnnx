@@ -1,14 +1,16 @@
 defmodule Jnnnx.Mnist.Dataset do
   @doc """
-  Load MNIST datasets.
+  Loads MNIST datasets.
 
   ## Examples
 
-      iex> [x_train, y_train, x_test, y_test] = Jnnnx.Mnist.Dataset.load_data()
+  ```
+  iex> [x_train, y_train, x_test, y_test] = Jnnnx.Mnist.Dataset.load_data()
+  ```
 
   """
   def load_data() do
-    [x_train, y_train] =
+    [x_train, x_test] =
       [
         'train-images-idx3-ubyte.gz',
         't10k-images-idx3-ubyte.gz'
@@ -19,7 +21,7 @@ defmodule Jnnnx.Mnist.Dataset do
         |> load_images()
       end)
 
-    [x_test, y_test] =
+    [y_train, y_test] =
       [
         'train-labels-idx1-ubyte.gz',
         't10k-labels-idx1-ubyte.gz'
