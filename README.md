@@ -21,7 +21,7 @@ y_train = y_train |> Jnnnx.Utils.to_categorical(10)
 y_test = y_test |> Jnnnx.Utils.to_categorical(10)
 
 # training
-params = Jnnnx.fit(x_train, y_train, [epoch: 5, batch_size: 100, learning_rate: 0.01])
+params = Jnnnx.fit(x_train, y_train, epoch: 5, batch_size: 100, learning_rate: 0.01)
 
 # evaluation
 score = Jnnnx.evaluate(params, x_test, y_test)
@@ -30,6 +30,6 @@ IO.puts("Accuracy: #{Nx.to_scalar(score)}")
 
 ## Author
 
-Kentaro Kuribayashi <kentarok@gmail.com>
+Kentaro Kuribayashi &lt;kentarok@gmail.com&gt;
 
 This repository has a bunch of manually-copied codes from the original author's talk, [Introducing Nx - José Valim | Lambda Days 2021](https://www.youtube.com/watch?v=fPKMmJpAGWc).
