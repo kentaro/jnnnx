@@ -1,21 +1,35 @@
 # Jnnnx
 
-**TODO: Add description**
+This is an example implementation of a neural network with [Nx](https://github.com/elixir-nx/nx) presented in José Valim's talk, [Introducing Nx](https://www.youtube.com/watch?v=fPKMmJpAGWc), at Lambda Days 2021.
 
-## Installation
+What I did for this repository were making some arrangement for ease to use and adding some util functions.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `jnnnx` to your list of dependencies in `mix.exs`:
+## Usage
+
+You can try Nx in a Keras-like manner as below:
 
 ```elixir
-def deps do
-  [
-    {:jnnnx, "~> 0.1.0"}
-  ]
-end
+# load data
+[x_train, y_train, x_test, y_test] = Jnnnx.MNIST.Dataset.load_data()
+
+# normalization
+x_train = x_train |> Nx.divide(255)
+x_test = x_test |> Nx.divide(255)
+
+# one-hot-encoding
+y_train = y_train |> Jnnnx.Utils.to_categorical(10)
+y_test = y_test |> Jnnnx.Utils.to_categorical(10)
+
+# training
+params = Jnnnx.fit(x_train, y_train, [epoch: 5, batch_size: 100, learning_rate: 0.01])
+
+# evaluation
+score = Jnnnx.evaluate(params, x_test, y_test)
+IO.puts("Accuracy: #{Nx.to_scalar(score)}")
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/jnnnx](https://hexdocs.pm/jnnnx).
+## Author
 
+Kentaro Kuribayashi <kentarok@gmail.com>
+
+This repository has a bunch of manually-copied codes from the original authors talk, [Introducing Nx - José Valim | Lambda Days 2021](https://www.youtube.com/watch?v=fPKMmJpAGWc).
