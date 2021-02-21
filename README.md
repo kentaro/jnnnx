@@ -32,4 +32,4 @@ IO.puts("Accuracy: #{Nx.to_scalar(score)}")
 
 Kentaro Kuribayashi <kentarok@gmail.com>
 
-This repository has a bunch of manually-copied codes from the original authors talk, [Introducing Nx - José Valim | Lambda Days 2021](https://www.youtube.com/watch?v=fPKMmJpAGWc).
+This repository has a bunch of manually-copied codes from the original author's talk, [Introducing Nx - José Valim | Lambda Days 2021](https://www.youtube.com/watch?v=fPKMmJpAGWc).
