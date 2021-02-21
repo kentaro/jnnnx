@@ -19,11 +19,11 @@ defmodule Jnnnx do
       |> Enum.with_index()
 
     for e <- 1..epoch,
-        {{images, labels}, b} <- zip,
+        {{x_batch, y_batch}, b} <- zip,
         reduce: Jnnnx.MNIST.init_params() do
       params ->
         IO.puts "epoch #{e}, batch #{b}"
-        Jnnnx.update(params, images, labels, opts)
+        Jnnnx.update(params, x_batch, y_batch, opts)
     end
   end
 
