@@ -48,10 +48,9 @@ defmodule Jnnnx.MNIST.Dataset do
   end
 
   defp load_images(data) do
-    <<_::32, n_images::32, n_rows::32, n_cols::32, images::binary>> = data
+    <<_::32, _::32, _::32, _::32, images::binary>> = data
 
     Nx.from_binary(images, {:u, 8})
-    |> Nx.reshape({n_images, n_rows * n_cols}, names: [:batch, :input])
   end
 
   defp load_labels(data) do
