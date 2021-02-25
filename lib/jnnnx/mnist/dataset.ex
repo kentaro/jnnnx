@@ -26,6 +26,7 @@ defmodule Jnnnx.MNIST.Dataset do
   end
 
   defp load_data_for(file_name) do
+    File.mkdir_p("tmp")
     tmp_file = Path.absname(file_name, "tmp")
 
     if File.exists?(tmp_file) do
