@@ -34,6 +34,13 @@ score = Jnnnx.evaluate(params, x_test, y_test)
 IO.puts("Accuracy: #{Nx.to_scalar(score)}")
 ```
 
+The above code is copied to `example/keras_like_manner.exs`.  
+You can also try it as the follow.
+
+```shell
+$ mix run example/keras_like_manner.exs
+```
+
 ## Author
 
 Kentaro Kuribayashi &lt;kentarok@gmail.com&gt;
